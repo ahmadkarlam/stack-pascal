@@ -26,6 +26,12 @@ begin
         isOneList := true;
 end;
 
+procedure Initialize(var Top : TNodePointer);
+
+begin
+    Top := nil;
+end;
+
 begin
     {} 
 end.
