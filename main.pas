@@ -8,7 +8,7 @@ type
 	end;
 
 var
-	Top: TNode;
+	Top: TNodePointer;
 
 begin
 	{} 
