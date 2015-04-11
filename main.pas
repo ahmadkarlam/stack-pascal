@@ -18,6 +18,14 @@ begin
         isEmpty := true;
 end;
 
+function isOneList(Top : TNodePointer) : boolean;
+
+begin
+    isOneList := false;
+    if (Top^.Next = nil) then
+        isOneList := true;
+end;
+
 begin
     {} 
 end.
