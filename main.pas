@@ -1,8 +1,11 @@
 program SimpleStack;
 
+uses 
+    crt;
+
 type
-    TNodePointer: ^TNode;
-    TNode : record
+    TNodePointer = ^TNode;
+    TNode = record
         Item : integer;
         Next : TNodePointer;
     end;
@@ -33,6 +36,22 @@ begin
     Top := nil;
 end;
 
+procedure MainMenu(var Option : integer);
+
+begin
+    write('+------------------------------------------------------------------------------+');
+    write('|                     | [1] Push | [2] Pop | [0] Exit |                        |');
+    write('+------------------------------------------------------------------------------+');
+    write('|                     | Choose one :                  |                        |');
+    write('+------------------------------------------------------------------------------+');
+    gotoxy(38, 4);
+    readln(Option);
+    writeln;
+end;
+
 begin
     Initialize(Top);
+    clrscr;
+    MainMenu(Option);
+    readln;
 end.
