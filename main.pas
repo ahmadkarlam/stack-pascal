@@ -9,6 +9,7 @@ type
 
 var
     Top: TNodePointer;
+    Option : integer;
 
 function isEmpty(Top : TNodePointer) : boolean;
 
@@ -33,5 +34,5 @@ begin
 end;
 
 begin
-    {} 
+    Initialize(Top);
 end.
