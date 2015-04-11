@@ -1,0 +1,5 @@
+program SimpleStack;
+
+begin
+	{} 
+end.
