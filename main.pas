@@ -13,7 +13,9 @@ var
 function isEmpty(Top : TNodePointer) : boolean;
 
 begin
-    {}
+    isEmpty := false;
+    if (Top = nil) then
+        isEmpty := true;
 end;
 
 begin
