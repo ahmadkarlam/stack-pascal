@@ -10,6 +10,12 @@ type
 var
 	Top: TNodePointer;
 
+function isEmpty(Top : TNodePointer) : boolean;
+
+begin
+	{}
+end;
+
 begin
 	{} 
 end.
