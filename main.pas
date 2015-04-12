@@ -14,20 +14,20 @@ var
     Top: TNodePointer;
     Option : integer;
 
-function isEmpty(Top : TNodePointer) : boolean;
+function Empty(Top : TNodePointer) : boolean;
 
 begin
-    isEmpty := false;
+    Empty := false;
     if (Top = nil) then
-        isEmpty := true;
+        Empty := true;
 end;
 
-function isOneList(Top : TNodePointer) : boolean;
+function OneList(Top : TNodePointer) : boolean;
 
 begin
-    isOneList := false;
+    OneList := false;
     if (Top^.Next = nil) then
-        isOneList := true;
+        OneList := true;
 end;
 
 procedure Initialize(var Top : TNodePointer);
@@ -115,7 +115,14 @@ var
 begin
     DeletedNode := Top;
     Item := DeletedNode^.Item;
-    Top := Top^.Next;
+    if (not OneList(Top)) then
+    begin
+        Top := Top^.Next;
+    end
+    else
+    begin
+        Top := nil;
+    end;
     Dispose(DeletedNode);
 end;
 
@@ -137,9 +144,16 @@ begin
             end;
         2 : begin
                 clrscr;
-                Pop(Top, Item);
-                PopHistory(Item);
-                ShowList(Top);
+                if (not Empty(Top)) then
+                begin
+                    Pop(Top, Item);
+                    PopHistory(Item);
+                    ShowList(Top);
+                end
+                else
+                begin
+                    writeln('Empty List');
+                end;
                 readln;
             end;
     end;
