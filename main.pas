@@ -1,4 +1,6 @@
 program SimpleStack;
+{I.S : Memilih menu yang diinginkan}
+{F.S : Menghasilkan menu yang dipilih}
 
 uses 
     crt;
@@ -15,6 +17,8 @@ var
     Option : integer;
 
 function Empty(Top : TNodePointer) : boolean;
+{I.S : Harga Top sudah di definisikan}
+{F.S : Menghasilkan nilai benar atau salah}
 
 begin
     Empty := false;
@@ -23,6 +27,8 @@ begin
 end;
 
 function OneList(Top : TNodePointer) : boolean;
+{I.S : Harga Top sudah di definisikan}
+{F.S : Menghasilkan nilai benar atau salah}
 
 begin
     OneList := false;
@@ -31,12 +37,16 @@ begin
 end;
 
 procedure Initialize(var Top : TNodePointer);
+{I.S : Harga Top sudah di definisikan}
+{F.S : Menghasilkan Top dengan nilai Nil}
 
 begin
     Top := nil;
 end;
 
 procedure MainMenu;
+{I.S : Parameter sembarang}
+{F.S : Menghasilkan tampilan menu utama}
 
 begin
     write('+------------------------------------------------------------------------------+');
@@ -48,6 +58,8 @@ begin
 end;
 
 procedure PushMenu;
+{I.S : Parameter sembarang}
+{F.S : Menghasilkan tampilan menu push}
 
 begin
     write('+------------------------------------------------------------------------------+');
@@ -59,6 +71,8 @@ begin
 end;
 
 procedure PopHistory(Item : integer);
+{I.S : Parameter sembarang}
+{F.S : Menghasilkan tampilan history pop}
 
 begin
     write('+------------------------------------------------------------------------------+');
@@ -70,6 +84,8 @@ begin
 end;
 
 procedure ShowList(Top : TNodePointer);
+{I.S : Harga Top sudah didefinisikan}
+{F.S : Menampilkan list}
 
 var 
     Assist : TNodePointer;
@@ -96,6 +112,8 @@ begin
 end;
 
 procedure Push(var Top : TNodePointer; Item : integer);
+{I.S : Harga Top dan Item sudah didefinisikan}
+{F.S : Menambahkan item ke dalam list}
 
 var
     NewNode: TNodePointer;
@@ -108,6 +126,8 @@ begin
 end;
 
 procedure Pop(var Top : TNodePointer; var Item : integer);
+{I.S : Harga Top dan Item sudah didefinisikan}
+{F.S : Menghapus item dari list}
 
 var
     DeletedNode: TNodePointer;
@@ -127,6 +147,8 @@ begin
 end;
 
 procedure ActionPush(var Top : TNodePointer);
+{I.S : Harga Top sudah didefinisikan}
+{F.S : Melakukan aksi push}
 
 var
     Item: integer;
@@ -142,6 +164,8 @@ begin
 end;
 
 procedure ActionPop(var Top : TNodePointer);
+{I.S : Harga Top sudah didefinisikan}
+{F.S : Melakukan aksi pop}
 
 var
     Item: integer;
@@ -162,6 +186,8 @@ begin
 end;
 
 procedure ActionFor(Option : integer; var Top : TNodePointer);
+{I.S : Harga Option dan Top sudah didefinisikan}
+{F.S : Melakukan aksi pada menu utama}
 
 begin
     case Option of
