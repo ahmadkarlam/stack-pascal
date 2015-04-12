@@ -36,7 +36,7 @@ begin
     Top := nil;
 end;
 
-procedure MainMenu(var Option : integer);
+procedure MainMenu;
 
 begin
     write('+------------------------------------------------------------------------------+');
@@ -44,14 +44,115 @@ begin
     write('+------------------------------------------------------------------------------+');
     write('|                     | Choose one :                  |                        |');
     write('+------------------------------------------------------------------------------+');
-    gotoxy(38, 4);
-    readln(Option);
     writeln;
+end;
+
+procedure PushMenu;
+
+begin
+    write('+------------------------------------------------------------------------------+');
+    write('|                     |    Please input number only   |                        |');
+    write('+------------------------------------------------------------------------------+');
+    write('|                     |    Item :                     |                        |');
+    write('+------------------------------------------------------------------------------+');
+    writeln;
+end;
+
+procedure PopHistory(Item : integer);
+
+begin
+    write('+------------------------------------------------------------------------------+');
+    write('|                     Item Pop : ', Item);
+    gotoxy(80, 2);
+    write('|');
+    write('+------------------------------------------------------------------------------+');
+    writeln;
+end;
+
+procedure ShowList(Top : TNodePointer);
+
+var 
+    Assist : TNodePointer;
+
+begin
+    write('+------------------------------------------------------------------------------+');
+    if (Top = nil) then
+    begin
+        write('                                    | / |                                       ');
+        write('                                     Top                                        ');
+    end
+    else
+    begin
+        Assist := Top;
+        writeln('Top');
+        while (Assist <> nil) do
+        begin
+            write(Assist^.Item, ' -> ');
+            Assist := Assist^.Next;
+        end;
+        writeln('nil');
+    end;
+    write('+------------------------------------------------------------------------------+');
+end;
+
+procedure Push(var Top : TNodePointer; Item : integer);
+
+var
+    NewNode: TNodePointer;
+
+begin
+    New(NewNode);
+    NewNode^.Item := Item;
+    NewNode^.Next := Top;
+    Top := NewNode;
+end;
+
+procedure Pop(var Top : TNodePointer; var Item : integer);
+
+var
+    DeletedNode: TNodePointer;
+
+begin
+    DeletedNode := Top;
+    Item := DeletedNode^.Item;
+    Top := Top^.Next;
+    Dispose(DeletedNode);
+end;
+
+procedure ActionFor(Option : integer; var Top : TNodePointer);
+
+var
+    Item: integer;
+
+begin
+    case Option of
+        1 : begin
+                clrscr;
+                PushMenu;
+                gotoxy(35, 4);
+                readln(Item);
+                Push(Top, Item);
+                ShowList(Top);
+                readln;
+            end;
+        2 : begin
+                clrscr;
+                Pop(Top, Item);
+                PopHistory(Item);
+                ShowList(Top);
+                readln;
+            end;
+    end;
 end;
 
 begin
     Initialize(Top);
-    clrscr;
-    MainMenu(Option);
-    readln;
+    repeat
+        clrscr;
+        MainMenu;
+        ShowList(Top);
+        gotoxy(38, 4);
+        readln(Option);
+        ActionFor(Option, Top);
+    until Option = 0;
 end.
