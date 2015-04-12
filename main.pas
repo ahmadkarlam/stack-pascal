@@ -126,36 +126,47 @@ begin
     Dispose(DeletedNode);
 end;
 
-procedure ActionFor(Option : integer; var Top : TNodePointer);
+procedure ActionPush(var Top : TNodePointer);
 
 var
     Item: integer;
 
 begin
+    clrscr;
+    PushMenu;
+    gotoxy(35, 4);
+    readln(Item);
+    Push(Top, Item);
+    ShowList(Top);
+    readln;
+end;
+
+procedure ActionPop(var Top : TNodePointer);
+
+var
+    Item: integer;
+
+begin
+    clrscr;
+    if (not Empty(Top)) then
+    begin
+        Pop(Top, Item);
+        PopHistory(Item);
+        ShowList(Top);
+    end
+    else
+    begin
+        writeln('Empty List');
+    end;
+    readln;
+end;
+
+procedure ActionFor(Option : integer; var Top : TNodePointer);
+
+begin
     case Option of
-        1 : begin
-                clrscr;
-                PushMenu;
-                gotoxy(35, 4);
-                readln(Item);
-                Push(Top, Item);
-                ShowList(Top);
-                readln;
-            end;
-        2 : begin
-                clrscr;
-                if (not Empty(Top)) then
-                begin
-                    Pop(Top, Item);
-                    PopHistory(Item);
-                    ShowList(Top);
-                end
-                else
-                begin
-                    writeln('Empty List');
-                end;
-                readln;
-            end;
+        1 : ActionPush(Top);
+        2 : ActionPop(Top);
     end;
 end;
 
