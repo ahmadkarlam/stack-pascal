@@ -146,6 +146,23 @@ begin
     Dispose(DeletedNode);
 end;
 
+procedure DestroyList(var Top : TNodePointer);
+{I.S : Harga Top sudah didefinisikan}
+{F.S : Melakukan aksi push}
+
+var
+    DeletedNode: TNodePointer;
+
+begin
+    DeletedNode := Top;
+    while (DeletedNode <> nil) do
+    begin
+        Top := Top^.Next;
+        Dispose(DeletedNode);
+        DeletedNode := Top;
+    end;
+end;
+
 procedure ActionPush(var Top : TNodePointer);
 {I.S : Harga Top sudah didefinisikan}
 {F.S : Melakukan aksi push}
@@ -193,6 +210,7 @@ begin
     case Option of
         1 : ActionPush(Top);
         2 : ActionPop(Top);
+        0 : DestroyList(Top);
     end;
 end;
 
