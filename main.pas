@@ -148,7 +148,7 @@ end;
 
 procedure DestroyList(var Top : TNodePointer);
 {I.S : Harga Top sudah didefinisikan}
-{F.S : Melakukan aksi push}
+{F.S : Melakukan penghancuran pada list}
 
 var
     DeletedNode: TNodePointer;
