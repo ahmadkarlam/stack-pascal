@@ -197,7 +197,8 @@ begin
     end
     else
     begin
-        writeln('Empty List, Please add the Node');
+        writeln('Empty List');
+        writeln('Please Add New Note'); //ditambahkan
     end;
     readln;
 end;
