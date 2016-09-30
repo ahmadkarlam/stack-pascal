@@ -197,7 +197,7 @@ begin
     end
     else
     begin
-        writeln('Empty List');
+        writeln('Empty List, Please add the Node');
     end;
     readln;
 end;
