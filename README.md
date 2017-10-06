@@ -1,2 +1,2 @@
 # stack-pascal
-Implement stack
+Implement stack on pascal
